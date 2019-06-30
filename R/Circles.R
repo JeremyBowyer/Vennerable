@@ -180,7 +180,7 @@ ThreeCircles <- function(r,x,y,d,angles,V) {
 	}
 
 	centres <- matrix(c(x,y),ncol=2,byrow=FALSE)
-	
+	print(centres)
 	nodes <- 1; TM <- NA
 	while (!inherits(TM,"TissueDrawing") & nodes < 10) {
 		VDC1 <- newTissueFromCircle(centres[1,],radius=r[1],Set=1,nodes=nodes); 
@@ -297,3 +297,77 @@ if (doWeights) {
 	C3
 }
 
+compute.C31 <- function(V,doWeights=TRUE) {
+	doEuler <- TRUE
+if (doWeights) {	
+		overlaps <- .pairwise.overlaps(V)
+		dList12 <- .Venn.2.weighted.distance (V[,c(1,2)],doEuler ) # returns radii of two circles and their distance
+		dList23 <- .Venn.2.weighted.distance (V[,c(2,3)],doEuler ) # 
+		dList31 <- .Venn.2.weighted.distance (V[,c(3,1)],doEuler ) #
+		
+		disjointcount <- sum(overlaps$Disjoint)
+		dp <- c( cp= dList12$d, b = dList23$d, a = dList31$d)
+		smidge <- 1 - 1e-4
+		if (disjointcount==3) {
+			# all disjoint, arrange with centres in equilateral triangle
+			dmax <- max(dp)
+			dp <- dp*0+dmax
+		} else if (disjointcount==2) {
+			#one is disjoint from both the others
+			# set it at the same distance from both
+			# and far enough that it will be a triangle 
+			conjoint <- overlaps[!overlaps$Disjoint,-ncol(overlaps)]
+			conjointix <-  ( which(conjoint==0)%%3 +1) 
+			conjointdistance <-  dp[conjointix ]
+			disjointdistances <- dp[-conjointix]
+			disjointdistances <- max(disjointdistances,conjointdistance/2)
+			dp[-conjointix] <- disjointdistances 
+		} else if (disjointcount==1) {
+			# only one missing intersection; we set its distance to
+			# force a (near) straightline
+			# nb this will still fail if the intersections are large enough
+			disjoint <- overlaps[overlaps$Disjoint,-ncol(overlaps)]
+			disjointix <- ( which(disjoint ==0)%%3 +1) 
+			conjointdistances <-  dp[-disjointix ]
+		 	dp[disjointix] <- sum(conjointdistances)*smidge
+		} 
+		cp= dp["cp"]; b = dp["b"]; a=dp["a"]
+
+		# can we satisfy the triangle inequality? if not, bodge it
+		if (a+b < cp) {
+			cp <-  (a+b)*smidge
+		}
+		if (b+cp < a) {
+			a <-  (b+cp)*smidge
+		}
+		if (cp+a < b ) {
+			b <- (cp+a)*smidge
+		}
+		# pick a centre for the first one	
+		c1 <- c(0, dList12$r1)
+		# then place the others
+		if (a==0 || b==0 || cp==0) {
+			o21 <- cp *c(1,0) ; o31 <- a * c(0,1)
+		} else {
+			# use the SSS rule to compute angles in the triangle
+			CP <- acos( (a^2+b^2-cp^2)/(2*a*b))
+			B <- acos( (a^2+cp^2-b^2)/(2*a*cp))
+			A <- acos( (cp^2+b^2-a^2)/(2*b*cp)) 
+			# arbitrarily bisect one and calculate xy offsets from first centre
+			theta <- B/2
+			o21 <- cp * c( sin(theta), - cos(theta))
+			o31 <- a * c( -sin(B-theta),	-cos(B-theta))
+		}
+		c2 <- c1 + o21
+		c3 <- c1 + o31
+		C3 <- ThreeCircles(r=c(dList12$r1,dList12$r2,dList31$r1),
+			x=c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2]),V=V)
+	} else {
+		C3 <- ThreeCircles(r=0.6,d=0.4,V=V)
+	}
+	C3 <- .square.universe(C3,doWeights=doWeights)
+	FaceLabels <- .default.FaceLabelPositions(C3)
+	C3 <- VennSetFaceLabels(C3,FaceLabels)
+
+	return(c(cp,b,a))
+}
