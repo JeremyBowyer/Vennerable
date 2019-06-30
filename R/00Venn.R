@@ -202,7 +202,7 @@ compute.Venn <- function(V,doWeights=TRUE,doEuler=FALSE,type) {
 	C3
 }
 
-getcircles = function(V){
+getcircles <- function(V){
 nSets <- NumberOfSets(V)
 	if (nSets < 2) {
 		stop("Not enough sets")
