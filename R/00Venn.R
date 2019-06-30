@@ -202,7 +202,30 @@ compute.Venn <- function(V,doWeights=TRUE,doEuler=FALSE,type) {
 	C3
 }
 
+getcircles = function(V){
+nSets <- NumberOfSets(V)
+	if (nSets < 2) {
+		stop("Not enough sets")
+	} 
+	if (missing(type)) {
+		type <- if (nSets==2) {
+			"circles"
+		} else if (nSets==3) {
+			"circles"
+		} else if (nSets==4) {
+			if (doWeights) "ChowRuskey" else "squares"
+		} else {
+			if (doWeights) "ChowRuskey" else "AWFE"	
+		}
+	}        
+	C3 <-switch(type,
+		
+ 
+		compute.C31(V,doWeights)
 
+
+	)	
+}
 
 plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
 			show=list(FaceText="weight",Faces=TRUE),
