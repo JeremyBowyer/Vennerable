@@ -64,8 +64,8 @@ compute.C2 <- function(V,doWeights=TRUE,doEuler=FALSE) {
 	r1 <- dList$r1;r2 <- dList$r2; d <- dList$d; 
 	C2 <- TwoCircles(r=c(r1,r2),d=d,V) # d in TwoCircles is distance of centre from origin
 	C2 <- .square.universe(C2,doWeights)
-       print(d)
-	print(r)
+      
+	print(dList)
 	C2
 	
 }
@@ -296,7 +296,7 @@ if (doWeights) {
 	C3 <- .square.universe(C3,doWeights=doWeights)
 	FaceLabels <- .default.FaceLabelPositions(C3)
 	C3 <- VennSetFaceLabels(C3,FaceLabels)
-print(data.frame(x=c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2])))
+print(data.frame(x=c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2]),r=c(dList12,dList23,dList31)))
 	C3
 }
 
