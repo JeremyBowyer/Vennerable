@@ -199,7 +199,6 @@ compute.Venn <- function(V,doWeights=TRUE,doEuler=FALSE,type) {
 			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
 			} 
 	)	
-	
 	C3
 }
 
