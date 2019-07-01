@@ -24,7 +24,7 @@ TwoCircles <- function(r,d,V) {
 	V2 <- VennSetSetLabels(V2,SetLabels)
 	FaceLabels <- .default.FaceLabelPositions(V2)
 	V2 <- VennSetFaceLabels(V2,FaceLabels)
-print(centres)
+
 	V2
 }
 
@@ -64,6 +64,7 @@ compute.C2 <- function(V,doWeights=TRUE,doEuler=FALSE) {
 	r1 <- dList$r1;r2 <- dList$r2; d <- dList$d; 
 	C2 <- TwoCircles(r=c(r1,r2),d=d,V) # d in TwoCircles is distance of centre from origin
 	C2 <- .square.universe(C2,doWeights)
+print(d)
 	C2
 	
 }
