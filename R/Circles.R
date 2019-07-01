@@ -1,9 +1,3 @@
-#warning("Entering Circles.R")
-
-################################################
-# some geometries 
-# r is radius of circle
-# d distance from origin
 
 
 TwoCircles <- function(r,d,V) {
@@ -29,7 +23,6 @@ TwoCircles <- function(r,d,V) {
 }
 
 .circle.SetLabelPositions <- function(object,radii,centres){
-	print(object)
 	yscale <- diff(VisibleRange(object)[,2]);
 	smidge <- 0.01*yscale
 	xy <- centres
@@ -65,8 +58,6 @@ compute.C2 <- function(V,doWeights=TRUE,doEuler=FALSE) {
 	r1 <- dList$r1;r2 <- dList$r2; d <- dList$d; 
 	C2 <- TwoCircles(r=c(r1,r2),d=d,V) # d in TwoCircles is distance of centre from origin
 	C2 <- .square.universe(C2,doWeights)
-      
-	print(dList)
 	C2
 	
 }
@@ -183,7 +174,7 @@ ThreeCircles <- function(r,x,y,d,angles,V) {
 	}
 
 	centres <- matrix(c(x,y),ncol=2,byrow=FALSE)
-	print(centres)
+	
 	nodes <- 1; TM <- NA
 	while (!inherits(TM,"TissueDrawing") & nodes < 10) {
 		VDC1 <- newTissueFromCircle(centres[1,],radius=r[1],Set=1,nodes=nodes); 
@@ -203,7 +194,6 @@ ThreeCircles <- function(r,x,y,d,angles,V) {
 	C3 <- new("VennDrawing",TM2,V)
 	SetLabels <- .circle.SetLabelPositions(C3,radii=r,centres=centres)
 	C3 <- VennSetSetLabels(C3,SetLabels)
-	print(r)
 }
 
 
@@ -290,14 +280,13 @@ if (doWeights) {
 		c2 <- c1 + o21
 		c3 <- c1 + o31
 		C3 <- ThreeCircles(r=c(dList12$r1,dList12$r2,dList31$r1),
-			x=c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2]),V=V,centres)
+			x=c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2]),V=V)
 	} else {
 		C3 <- ThreeCircles(r=0.6,d=0.4,V=V)
 	}
 	C3 <- .square.universe(C3,doWeights=doWeights)
 	FaceLabels <- .default.FaceLabelPositions(C3)
 	C3 <- VennSetFaceLabels(C3,FaceLabels)
-print(data.frame(x=c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2]),r=c(dList12,dList23,dList31)))
+
 	C3
 }
-
