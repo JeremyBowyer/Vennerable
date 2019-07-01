@@ -43,6 +43,7 @@ setMethod("VisibleRange","TissueDrawing",function(object){
 })
 
 .default.SetLabelPositions <- function(object){
+	print(object)
 	yscale <- diff(VisibleRange(object)[,2]); smidge <- 0.01*yscale
 	sxxy <- lapply(names(object@setList),.face.toxy,type="set",drawing=object)
 	setNames <- VennSetNames(as(object,"Venn"))
@@ -71,6 +72,7 @@ setMethod("PlotUniverse","VennDrawing", function(object,gp) {
 .square.universe <- function(object,doWeights=FALSE,smudge=0.05) {
 	if (FALSE & doWeights) { # never attempt to weight the Dark Matter for now
 		# minimal square box 
+		print(object)
 		minimal.square.universe.area <- diff(VisibleRange(object)[,1])*diff(VisibleRange(object)[,2])
 		V <- as(object,"Venn")
 		visible.area <- .WeightVisible(V)
