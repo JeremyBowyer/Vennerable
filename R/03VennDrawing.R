@@ -64,7 +64,7 @@ setMethod("PlotUniverse","VennDrawing", function(object,gp) {
 	if(missing(gp)) { gp <- NULL }
 	uv <- VennGetUniverseRange(object)
 	grid.rect(x=mean(uv[,1]),y=mean(uv[,2]),
-		width=diff(uv[,1]),height=diff(uv[,2]),default.units="native",gp=gp)
+		width=diff(uv[,1])+2,height=diff(uv[,2]),default.units="native",gp=gp)
 	}
 )
 
@@ -376,7 +376,7 @@ makevp.eqsc <- function(xrange,yrange,centres) {
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
 	pushViewport(viewport(name="Vennlay",layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)))
 	pars = par("mar")
-	pars[2] = pars[2] + 2
+	pars[2] = pars[2] + 4
 	par(mar = pars)
 	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange,yscale=yrange))
 	}
