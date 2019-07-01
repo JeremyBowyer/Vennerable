@@ -93,10 +93,10 @@ setMethod("PlotUniverse","VennDrawing", function(object,gp) {
 }
 
 
-CreateViewport <- function(object) {
+CreateViewport <- function(object,centres) {
 	xData <- VennGetUniverseRange(object)[,1]
 	yData <- VennGetUniverseRange(object)[,2]
-	makevp.eqsc(xData,yData)
+	makevp.eqsc(xData,yData,centres)
 }
 
 UpViewports <- function() {
@@ -371,7 +371,7 @@ PlotSetLabels <- function(object,gp) {
 }
 
 
-makevp.eqsc <- function(xrange,yrange) {
+makevp.eqsc <- function(xrange,yrange,centres) {
 	# cf Fig 7.4 of Murrell R Graphics
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
 	pushViewport(viewport(name="Vennlay",layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)))
