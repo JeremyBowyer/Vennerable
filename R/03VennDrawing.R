@@ -255,7 +255,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 	if(show.default$Universe) {
 		PlotUniverse(C3)
 	}
-	grid.rect(x=xrange,y=c(0.5,0.5))
+	grid.rect(x=c(0,0.5),y=c(0.5,0.5))
 #	if(show.default$DarkMatter) {
 #		PlotDarkMatter(C3)
 #	}
