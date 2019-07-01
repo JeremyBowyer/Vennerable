@@ -222,7 +222,7 @@ nSets <- NumberOfSets(V)
 		AWFE=,AWFEscale=,battle=,cog=compute.AWFE(V,type=type),
 		ChowRuskey=,compute.CR(V,doWeights),
 		circles=
-			if (nSets==2) { compute.C21(V,doWeights,doEuler) 
+			if (nSets==2) { compute.C2(V,doWeights,doEuler) 
 			}else if (nSets==3) {compute.C31(V,doWeights)
 			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
 			} ,
