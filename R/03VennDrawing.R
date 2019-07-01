@@ -43,6 +43,7 @@ setMethod("VisibleRange","TissueDrawing",function(object){
 })
 
 .default.SetLabelPositions <- function(object){
+	print(object)
 	yscale <- diff(VisibleRange(object)[,2]); smidge <- 0.01*yscale
 	sxxy <- lapply(names(object@setList),.face.toxy,type="set",drawing=object)
 	setNames <- VennSetNames(as(object,"Venn"))
