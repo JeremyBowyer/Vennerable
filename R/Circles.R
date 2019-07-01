@@ -24,7 +24,7 @@ TwoCircles <- function(r,d,V) {
 	V2 <- VennSetSetLabels(V2,SetLabels)
 	FaceLabels <- .default.FaceLabelPositions(V2)
 	V2 <- VennSetFaceLabels(V2,FaceLabels)
-
+print(centres)
 	V2
 }
 
