@@ -1,16 +1,3 @@
-#warning("Entering 03VennDrawing")
-
-# need to integrate DrawnVenn and AWFE classes
-#**************************************************************************
-#
-# # $Id: 01DrawnVenn.R,v 1.1 2007/10/16 10:59:52 js229 Exp $
-
-# $Log: 01DrawnVenn.R,v $
-# Revision 1.1  2007/10/16 10:59:52  js229
-# Compiles properly again
-#
-
-################################################
 setGeneric("PlotUniverse",function(object,gp){standardGeneric("PlotUniverse")})
 #setGeneric("IntersectionMidpoints",function(object){standardGeneric("IntersectionMidpoints")}) 
 #setGeneric("SetLabelPositions",function(object){standardGeneric("SetLabelPositions")}) 
@@ -43,7 +30,6 @@ setMethod("VisibleRange","TissueDrawing",function(object){
 })
 
 .default.SetLabelPositions <- function(object){
-	print(object)
 	yscale <- diff(VisibleRange(object)[,2]); smidge <- 0.01*yscale
 	sxxy <- lapply(names(object@setList),.face.toxy,type="set",drawing=object)
 	setNames <- VennSetNames(as(object,"Venn"))
@@ -72,7 +58,6 @@ setMethod("PlotUniverse","VennDrawing", function(object,gp) {
 .square.universe <- function(object,doWeights=FALSE,smudge=0.05) {
 	if (FALSE & doWeights) { # never attempt to weight the Dark Matter for now
 		# minimal square box 
-		print(object)
 		minimal.square.universe.area <- diff(VisibleRange(object)[,1])*diff(VisibleRange(object)[,2])
 		V <- as(object,"Venn")
 		visible.area <- .WeightVisible(V)
@@ -95,10 +80,10 @@ setMethod("PlotUniverse","VennDrawing", function(object,gp) {
 }
 
 
-CreateViewport <- function(object,centres) {
+CreateViewport <- function(object) {
 	xData <- VennGetUniverseRange(object)[,1]
 	yData <- VennGetUniverseRange(object)[,2]
-	makevp.eqsc(xData,yData,centres)
+	makevp.eqsc(xData,yData)
 }
 
 UpViewports <- function() {
@@ -252,12 +237,9 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
  	
 	CreateViewport(C3)
 	
-	
-
 	if(show.default$Universe) {
 		PlotUniverse(C3)
 	}
-	grid.rect(x=c(0,0.5),y=c(0.5,0.5))
 #	if(show.default$DarkMatter) {
 #		PlotDarkMatter(C3)
 #	}
@@ -276,7 +258,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 			gp=gp[["FaceText"]],
 			show.dark.matter=show.default$DarkMatter)	
 	}
-        
+
 	UpViewports()	
 }
 
@@ -334,8 +316,7 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 	}
 }
 
-.default.FaceLabelPositions <- function(object){
-	print(object)
+.default.FaceLabelPositions <- function(object){	
 	dm <-  dark.matter.signature(object)
 	ilabels <- data.frame(internalPointsofFaces(as(object,"TissueDrawing")))
 	colnames(ilabels) <- c("x","y")
@@ -377,14 +358,11 @@ PlotSetLabels <- function(object,gp) {
 }
 
 
-makevp.eqsc <- function(xrange,yrange,centres) {
+makevp.eqsc <- function(xrange,yrange) {
 	# cf Fig 7.4 of Murrell R Graphics
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
-	
 	pushViewport(viewport(name="Vennlay",layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)))
-	
 	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange,yscale=yrange))
-	
 	}
 
 PlotDarkMatter <- function(VD) {
@@ -393,4 +371,3 @@ PlotDarkMatter <- function(VD) {
 	grid.polygon(x=ur[c(1,1,2,2),1],y=ur[c(1,2,2,1),2],gp=gpar(fill=grey))
 	.PlotFace.TissueDrawing(VD,"DarkMatter",gp=gpar(fill="white"),doDarkMatter=TRUE)
 	}
-
