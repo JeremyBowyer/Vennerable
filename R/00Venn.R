@@ -202,7 +202,7 @@ compute.Venn <- function(V,doWeights=TRUE,doEuler=FALSE,type) {
 	C3
 }
 
-getcircles <- function(V){
+getcircles <- function(V,type){
 nSets <- NumberOfSets(V)
 	if (nSets < 2) {
 		stop("Not enough sets")
@@ -217,11 +217,29 @@ nSets <- NumberOfSets(V)
 		} else {
 			if (doWeights) "ChowRuskey" else "AWFE"	
 		}
-	}        
-	C3 <-switch(type,
-		
- 
-		compute.C31(V,doWeights)
+	} 
+		C3 <-switch(type,
+		AWFE=,AWFEscale=,battle=,cog=compute.AWFE(V,type=type),
+		ChowRuskey=,compute.CR(V,doWeights),
+		circles=
+			if (nSets==2) { compute.C21(V,doWeights,doEuler) 
+			}else if (nSets==3) {compute.C31(V,doWeights)
+			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
+			} ,
+		squares=
+		  	if (nSets==2) { compute.S2(V,doWeights,doEuler) 
+			}else if (nSets==3) {compute.S3(V,doWeights)
+			}else if (nSets==4) {compute.S4(V,doWeights)
+		} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
+			} ,
+		triangles= if (nSets==3) { compute.T3(V,doWeights) 
+			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
+			} ,
+		ellipses= if (nSets==4) { compute.E4(V,doWeights) 
+			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
+			} 
+	)	
+	
 
 
 	)	
