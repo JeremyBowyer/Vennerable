@@ -377,7 +377,7 @@ makevp.eqsc <- function(xrange,yrange,centres) {
 	# cf Fig 7.4 of Murrell R Graphics
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
 	#layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)
-	pushViewport(viewport(name="Vennlay",x=0.2,y=0,w=unit(0.8,"npc"),h=unit(1,"npc"))
+	pushViewport(viewport(name="Vennlay",x=0.2,y=0,w=unit(0.8,"npc"),h=unit(1,"npc")))
 	xrange2 = xrange
 	xrange[1] = xrange[1] + 2
 	yrange2[1] = yrange[1] + 2
