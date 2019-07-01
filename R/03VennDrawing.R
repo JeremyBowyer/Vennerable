@@ -376,14 +376,10 @@ PlotSetLabels <- function(object,gp) {
 makevp.eqsc <- function(xrange,yrange,centres) {
 	# cf Fig 7.4 of Murrell R Graphics
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
-	#layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)
-	pushViewport(viewport(name="Vennlay",x=0.2,y=0,w=unit(0.8,"npc"),h=unit(1,"npc")))
-	xrange2 = xrange
-	yrange2 =yrange
-	xrange[1] = xrange[1] + 2
-	yrange2[1] = yrange[1] + 2
+	
+	pushViewport(viewport(name="Vennlay",layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)))
 	grid.rect(x=xrange)
-	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange2,yscale=yrange2))
+	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange,yscale=yrange))
 	
 	}
 
