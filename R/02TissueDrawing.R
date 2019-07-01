@@ -1,7 +1,3 @@
-#warning("Entering 02TissueDrawing")
-# # $Id: 02Drawing.R,v 1.1 2007/10/16 10:59:52 js229 Exp $
-
-# $Log: 02Drawing.R,v $
 
 setGeneric("PlotSetBoundaries",function(drawing,gp){standardGeneric("PlotSetBoundaries")})
 setGeneric("PlotNodes",function(drawing,gp){standardGeneric("PlotNodes")})
@@ -2264,4 +2260,3 @@ joinEdgesInDrawing <- function(drawing,inedgeName ,outedgeName) {
 	}
 	return(list(diagram=diagram,merged=doingamerge))
 }
-	
