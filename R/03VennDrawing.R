@@ -72,6 +72,7 @@ setMethod("PlotUniverse","VennDrawing", function(object,gp) {
 .square.universe <- function(object,doWeights=FALSE,smudge=0.05) {
 	if (FALSE & doWeights) { # never attempt to weight the Dark Matter for now
 		# minimal square box 
+		print(object)
 		minimal.square.universe.area <- diff(VisibleRange(object)[,1])*diff(VisibleRange(object)[,2])
 		V <- as(object,"Venn")
 		visible.area <- .WeightVisible(V)
@@ -333,7 +334,8 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 	}
 }
 
-.default.FaceLabelPositions <- function(object){	
+.default.FaceLabelPositions <- function(object){
+	print(object)
 	dm <-  dark.matter.signature(object)
 	ilabels <- data.frame(internalPointsofFaces(as(object,"TissueDrawing")))
 	colnames(ilabels) <- c("x","y")
