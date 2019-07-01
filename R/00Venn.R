@@ -202,7 +202,7 @@ compute.Venn <- function(V,doWeights=TRUE,doEuler=FALSE,type) {
 	C3
 }
 
-getcircles <- function(V,type){
+getcircles <- function(V,type="circle"){
 nSets <- NumberOfSets(V)
 	if (nSets < 2) {
 		stop("Not enough sets")
@@ -242,7 +242,7 @@ nSets <- NumberOfSets(V)
 	
 
 
-	)	
+		
 }
 
 plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
