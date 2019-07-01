@@ -202,48 +202,7 @@ compute.Venn <- function(V,doWeights=TRUE,doEuler=FALSE,type) {
 	C3
 }
 
-getcircles <- function(V,type="circle"){
-nSets <- NumberOfSets(V)
-	if (nSets < 2) {
-		stop("Not enough sets")
-	} 
-	if (missing(type)) {
-		type <- if (nSets==2) {
-			"circles"
-		} else if (nSets==3) {
-			"circles"
-		} else if (nSets==4) {
-			if (doWeights) "ChowRuskey" else "squares"
-		} else {
-			if (doWeights) "ChowRuskey" else "AWFE"	
-		}
-	} 
-		C3 <-switch(type,
-		AWFE=,AWFEscale=,battle=,cog=compute.AWFE(V,type=type),
-		ChowRuskey=,compute.CR(V,doWeights),
-		circles=
-			if (nSets==2) { compute.C2(V,doWeights,doEuler) 
-			}else if (nSets==3) {compute.C31(V,doWeights)
-			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
-			} ,
-		squares=
-		  	if (nSets==2) { compute.S2(V,doWeights,doEuler) 
-			}else if (nSets==3) {compute.S3(V,doWeights)
-			}else if (nSets==4) {compute.S4(V,doWeights)
-		} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
-			} ,
-		triangles= if (nSets==3) { compute.T3(V,doWeights) 
-			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
-			} ,
-		ellipses= if (nSets==4) { compute.E4(V,doWeights) 
-			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
-			} 
-	)	
-	
-     C3
 
-		
-}
 
 plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
 			show=list(FaceText="weight",Faces=TRUE),
@@ -260,5 +219,8 @@ setMethod("plot", signature(x="Venn", y="missing"),function(x,y,...)plotVenn(V=x
 
 #plot.Venn <- plotVenn
 #setMethod("plot",signature(x="Venn",y="missing"),function(x,y,...)plotVenn(V=x,...))
+
+
+
 
 
