@@ -271,7 +271,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 			gp=gp[["FaceText"]],
 			show.dark.matter=show.default$DarkMatter)	
 	}
-
+        
 	UpViewports()	
 }
 
@@ -380,6 +380,7 @@ makevp.eqsc <- function(xrange,yrange,centres) {
 	par(mar = pars)
 	xrange[1] = xrange[1] + 2
 	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange,yscale=yrange))
+	grid.rect(x=xrange)
 	}
 
 PlotDarkMatter <- function(VD) {
