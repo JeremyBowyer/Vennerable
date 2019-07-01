@@ -29,6 +29,7 @@ TwoCircles <- function(r,d,V) {
 }
 
 .circle.SetLabelPositions <- function(object,radii,centres){
+	print(object)
 	yscale <- diff(VisibleRange(object)[,2]);
 	smidge <- 0.01*yscale
 	xy <- centres
