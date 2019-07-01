@@ -378,9 +378,9 @@ makevp.eqsc <- function(xrange,yrange,centres) {
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
 	
 	pushViewport(viewport(name="Vennlay",layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)))
-	grid.rect(x=xrange,y=c(0.5,0.5))
-	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange,yscale=yrange))
 	
+	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange,yscale=yrange))
+	grid.rect(x=xrange,y=c(0.5,0.5))
 	}
 
 PlotDarkMatter <- function(VD) {
