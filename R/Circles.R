@@ -64,7 +64,7 @@ compute.C2 <- function(V,doWeights=TRUE,doEuler=FALSE) {
 	r1 <- dList$r1;r2 <- dList$r2; d <- dList$d; 
 	C2 <- TwoCircles(r=c(r1,r2),d=d,V) # d in TwoCircles is distance of centre from origin
 	C2 <- .square.universe(C2,doWeights)
-print(d)
+       print(d)
 	C2
 	
 }
