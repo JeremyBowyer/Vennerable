@@ -369,5 +369,5 @@ if (doWeights) {
 	FaceLabels <- .default.FaceLabelPositions(C3)
 	C3 <- VennSetFaceLabels(C3,FaceLabels)
 
-	return(c(cp,b,a))
+	return(data.frame(c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2])))
 }
