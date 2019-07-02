@@ -256,6 +256,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 	}
 
 	if (length(show.default$FaceText)>0) {
+		
 		PlotIntersectionText(C3,element.plot=show.default$FaceText,
 			gp=gp[["FaceText"]],
 			show.dark.matter=show.default$DarkMatter)	
@@ -312,9 +313,11 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 	hj <-sapply( VI$hjust,function(EXPR){switch(EXPR,left=0,right=1,center=,centre=0.5)})
 	vj <-sapply( VI$vjust,function(EXPR){switch(EXPR,top=1,bottom=0,center=,centre=0.5)})
 	for (ij in 1:nrow(VI)) {
-		grid.text(x=VI$x[ij],y=VI$y[ij],hjust=hj[ij],
-		gp=gp[[VI$FaceName[ij]]],
-		vjust=vj[ij],label=VI$Annotation[ij],default.units="native")
+		#grid.text(x=VI$x[ij],y=VI$y[ij],hjust=hj[ij],
+		#gp=gp[[VI$FaceName[ij]]],
+		#vjust=vj[ij],label=VI$Annotation[ij],default.units="native")
+		grid.segments(x0=VLabels$x[ij],x1=VLabels$x[ij],y0=9,y1=VLabels$y[ij])
+		grid.text(x=VLabels$x[ij],y=9,label=as.character(VLabels$Label[ij]))
 		
 	}
 }
