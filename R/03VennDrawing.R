@@ -245,9 +245,9 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 #	if(show.default$DarkMatter) {
 #		PlotDarkMatter(C3)
 #	}
-	#if (show.default$Faces) {
-#		PlotFaces(C3,gp=gp[["Face"]])
-#	}
+	if (show.default$Faces) {
+		PlotFaces(C3,gp=gp[["Face"]])
+	}
 	if(show.default$Sets) {
 		PlotSetBoundaries(C3,gp=gp[["Set"]])
 	}
@@ -261,7 +261,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 			show.dark.matter=show.default$DarkMatter)	
 	}
 
-	UpViewports()	
+	#UpViewports()	
 }
 
 setMethod("plot",signature(x="VennDrawing",y="missing"),function(x,y,...)PlotVennGeometry(C3=x,...))
