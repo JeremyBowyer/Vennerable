@@ -236,7 +236,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 	
  	
 	CreateViewport(C3)
-	grid.rect(x=c(0,.5),y=c(0,.5)
+	grid.rect(x=c(0,.5),y=c(0,.5))
 	if(show.default$Universe) {
 		PlotUniverse(C3)
 	}
