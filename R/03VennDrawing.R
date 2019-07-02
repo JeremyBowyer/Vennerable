@@ -367,7 +367,11 @@ makevp.eqsc <- function(xrange,yrange) {
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
 
 	pushViewport(viewport(name="Vennlay",layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)))
-
+     xscale[1] = xscale[1] - .2
+	xscale[2] = xscale[2] + .2
+	
+     yscale[1] = yscale[1] - .2
+	yscale[2] = yscale[2] + .2
 	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange,yscale=yrange))
 	}
 
