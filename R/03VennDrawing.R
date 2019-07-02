@@ -359,6 +359,8 @@ PlotSetLabels <- function(object,gp) {
 
 
 makevp.eqsc <- function(xrange,yrange) {
+	print(yrange)
+	print(xrange)
 	# cf Fig 7.4 of Murrell R Graphics
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
 	pushViewport(viewport(name="Vennlay",layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)))
