@@ -238,16 +238,16 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 	
  	
 	CreateViewport(C3)
-	grid.rect(x=c(0,.5),y=c(0,.5))
+	
 	if(show.default$Universe) {
 		PlotUniverse(C3)
 	}
 #	if(show.default$DarkMatter) {
 #		PlotDarkMatter(C3)
 #	}
-	if (show.default$Faces) {
-		PlotFaces(C3,gp=gp[["Face"]])
-	}
+	#if (show.default$Faces) {
+#		PlotFaces(C3,gp=gp[["Face"]])
+#	}
 	if(show.default$Sets) {
 		PlotSetBoundaries(C3,gp=gp[["Set"]])
 	}
