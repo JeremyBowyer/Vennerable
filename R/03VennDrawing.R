@@ -272,7 +272,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 			show.dark.matter=show.default$DarkMatter)	
 	}
 
-	UpViewports()	
+	#UpViewports()	
 }
 
 setMethod("plot",signature(x="VennDrawing",y="missing"),function(x,y,...)PlotVennGeometry(C3=x,...))
