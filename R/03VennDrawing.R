@@ -316,8 +316,8 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 		#grid.text(x=VI$x[ij],y=VI$y[ij],hjust=hj[ij],
 		#gp=gp[[VI$FaceName[ij]]],
 		#vjust=vj[ij],label=VI$Annotation[ij],default.units="native")
-		grid.segments(x0=VLabels$x[ij],x1=VLabels$x[ij],y0=9,y1=VLabels$y[ij])
-		grid.text(x=VLabels$x[ij],y=9,label=as.character(VLabels$Label[ij]))
+		grid.segments(x0=VI$x[ij],x1=VI$x[ij],y0=9,y1=VI$y[ij])
+		grid.text(x=VI$x[ij],y=9,label=as.character(VI$Label[ij]))
 		
 	}
 }
