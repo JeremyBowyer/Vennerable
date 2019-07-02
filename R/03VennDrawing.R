@@ -49,7 +49,9 @@ setMethod("VennGetFaceLabels","VennDrawing",function(object) {object@FaceLabels}
 
 setMethod("PlotUniverse","VennDrawing", function(object,gp) {
 	if(missing(gp)) { gp <- NULL }
+	
 	uv <- VennGetUniverseRange(object)
+	print(uv)
 	grid.rect(x=mean(uv[,1]),y=mean(uv[,2]),
 		width=diff(uv[,1]),height=diff(uv[,2]),default.units="native",gp=gp)
 	}
