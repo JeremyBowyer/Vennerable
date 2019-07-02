@@ -252,7 +252,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 		PlotSetBoundaries(C3,gp=gp[["Set"]])
 	}
 	if(show.default$SetLabels) {
-		PlotSetLabels (C3,gp=gp[["SetText"]]) 
+		PlotSetLabels (C3,gp=gp[["SetText"]],C3) 
 	}
 
 	if (length(show.default$FaceText)>0) {
@@ -349,7 +349,7 @@ setMethod("Areas","VennDrawing",function(object) {
 
 
 
-PlotSetLabels <- function(object,gp) {
+PlotSetLabels <- function(object,gp,C3) {
 	VLabels <- VennGetSetLabels(object)
 	print(VLabels)
 	if(missing(gp)) gp <- SetColours(object)
@@ -358,11 +358,15 @@ PlotSetLabels <- function(object,gp) {
 	# just may not be vectorised...
 	hj <-sapply( VLabels$hjust,function(EXPR){switch(EXPR,left=0,right=1,center=,centre=0.5)})
 	vj <-sapply( VLabels$vjust,function(EXPR){switch(EXPR,top=1,bottom=0,center=,centre=0.5)})
-
+        	xData <- VennGetUniverseRange(C3)[,1]
+	yData <- VennGetUniverseRange(C3)[,2]
+	 
+	ymax = yData[1]
+	
 	for (ij in 1:nrow(VLabels)) {
 		#grid.text(x=VLabels$x[ij],y=VLabels$y[ij],hjust=hj[ij],
 		#vjust=vj[ij],gp=gp[[ij]],label=as.character(VLabels$Label[ij]),default.units="native")
-		grid.segments(x0=VLabels$x[ij],x1=VLabels$x[ij],y0=0,y1=VLabels$y[ij])
+		grid.segments(x0=VLabels$x[ij],x1=VLabels$x[ij],y0=ymax,y1=VLabels$y[ij])
 		grid.text(x=VLabels$x[ij],y=0,label=as.character(VLabels$Label[ij]))
 	}
 }
