@@ -315,6 +315,7 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 		grid.text(x=VI$x[ij],y=VI$y[ij],hjust=hj[ij],
 		gp=gp[[VI$FaceName[ij]]],
 		vjust=vj[ij],label=VI$Annotation[ij],default.units="native")
+		
 	}
 }
 
@@ -332,6 +333,7 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 	df[df$Signature==dm,c("hjust")] <- c("right")
 	df[df$Signature==dm,c("vjust")] <- c("top")
 	df[df$Signature==dm,c("x","y")] <- VisibleRange(object)[2,]
+	
 	df
 }
 
@@ -346,6 +348,7 @@ setMethod("Areas","VennDrawing",function(object) {
 
 PlotSetLabels <- function(object,gp) {
 	VLabels <- VennGetSetLabels(object)
+	print(VLabels)
 	if(missing(gp)) gp <- SetColours(object)
 	if(nrow(VLabels)==0){ warning("Can't show Set labels"); return()}
 #	print(VLabels)
