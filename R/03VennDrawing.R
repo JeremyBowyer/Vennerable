@@ -239,9 +239,9 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
  	
 	CreateViewport(C3)
 	
-	if(show.default$Universe) {
-		PlotUniverse(C3)
-	}
+#	if(show.default$Universe) {
+	#	PlotUniverse(C3)
+	#}
 #	if(show.default$DarkMatter) {
 #		PlotDarkMatter(C3)
 #	}
