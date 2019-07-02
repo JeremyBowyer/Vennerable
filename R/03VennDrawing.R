@@ -362,6 +362,10 @@ makevp.eqsc <- function(xrange,yrange) {
 	# cf Fig 7.4 of Murrell R Graphics
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
 	pushViewport(viewport(name="Vennlay",layout=grid.layout(1,1,widths=diff(xrange),heights=diff(yrange),respect=TRUE)))
+	xrange[1] = xrange[1] - .2
+	xrange[2] = xrange[2] +.2
+	yrange[1] = yrange[1] - .2
+	yrange[2] = yrange[2] +.2
 	pushViewport(viewport(name="Vennvp",layout.pos.row=1,layout.pos.col=1,xscale=xrange,yscale=yrange))
 	}
 
