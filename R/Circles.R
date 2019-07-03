@@ -1,6 +1,7 @@
 
 
 TwoCircles <- function(r,d,V) {
+	print("two circles")
 	if (length(r) !=2 ) {
 		if (length(r)==1 ) {
 			r <- rep(r,2)
@@ -56,6 +57,7 @@ compute.C2 <- function(V,doWeights=TRUE,doEuler=FALSE) {
 	}
 	dList <- .Venn.2.weighted.distance (Vcalc,doEuler) # returns radii of two circles and their distance
 	r1 <- dList$r1;r2 <- dList$r2; d <- dList$d; 
+	twocircle = c(r1= r1,r2=r2,d=d)
 	C2 <- TwoCircles(r=c(r1,r2),d=d,V) # d in TwoCircles is distance of centre from origin
 	C2 <- .square.universe(C2,doWeights)
 	C2
@@ -155,6 +157,7 @@ compute.C2 <- function(V,doWeights=TRUE,doEuler=FALSE) {
 
 
 ThreeCircles <- function(r,x,y,d,angles,V) {
+	print("three circles")
 	if (missing(x) | missing(y)) {
 		if (missing(d)) {
 			stop("Need x and y or d")
@@ -190,7 +193,8 @@ ThreeCircles <- function(r,x,y,d,angles,V) {
 		nodes <- nodes+1
 	} 
 	if (nodes>=10) stop("Still can't join circles")
-
+	
+       print(C3)
 	C3 <- new("VennDrawing",TM2,V)
 	SetLabels <- .circle.SetLabelPositions(C3,radii=r,centres=centres)
 	C3 <- VennSetSetLabels(C3,SetLabels)
