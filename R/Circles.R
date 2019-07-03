@@ -228,8 +228,9 @@ if (doWeights) {
 		dList12 <- .Venn.2.weighted.distance (V[,c(1,2)],doEuler ) # returns radii of two circles and their distance
 		dList23 <- .Venn.2.weighted.distance (V[,c(2,3)],doEuler ) # 
 		dList31 <- .Venn.2.weighted.distance (V[,c(3,1)],doEuler ) #
-		dfr = data.frame(r=c(dList12$r,dList23$r,dList31$r))
-	dfd = data.frame()
+		dfr = data.frame(r1=c(dList12$r1,dList23$r1,dList31$1r))
+	dfd = data.frame(dx=c(dList12$d[1],dList23$d[1],dList31$d[1]),dy=c(dList12$d[2],dList23$d[2],dList31$d[2]))
+	
 		disjointcount <- sum(overlaps$Disjoint)
 		dp <- c( cp= dList12$d, b = dList23$d, a = dList31$d)
 		smidge <- 1 - 1e-4
