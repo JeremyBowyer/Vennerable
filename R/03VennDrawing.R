@@ -236,7 +236,7 @@ PlotVennGeometry <- function(C3,gpList,show=list(FaceText="weight")) {
 		}
 	}
 	
- 	
+ 	print(c3)
 	CreateViewport(C3)
 	
 #	if(show.default$Universe) {
