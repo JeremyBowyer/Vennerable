@@ -229,6 +229,7 @@ if (doWeights) {
 		dList23 <- .Venn.2.weighted.distance (V[,c(2,3)],doEuler ) # 
 		dList31 <- .Venn.2.weighted.distance (V[,c(3,1)],doEuler ) #
 		dfr = data.frame(r=c(dList12$r,dList23$r,dList31$r))
+	dfd = data.frame()
 		disjointcount <- sum(overlaps$Disjoint)
 		dp <- c( cp= dList12$d, b = dList23$d, a = dList31$d)
 		smidge <- 1 - 1e-4
@@ -272,6 +273,7 @@ if (doWeights) {
 		# then place the others
 		if (a==0 || b==0 || cp==0) {
 			o21 <- cp *c(1,0) ; o31 <- a * c(0,1)
+			
 		} else {
 			# use the SSS rule to compute angles in the triangle
 			CP <- acos( (a^2+b^2-cp^2)/(2*a*b))
@@ -284,8 +286,8 @@ if (doWeights) {
 		}
 		c2 <- c1 + o21
 		c3 <- c1 + o31
+	        dfc = data.frame(x=c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2]))
 	        
-	        dfc = data.frame(c=c(c1[1],c2[1],c3[1]))
 	        print(dfr)
 	print(dfc)
 		C3 <- ThreeCircles(r=c(dList12$r1,dList12$r2,dList31$r1),
