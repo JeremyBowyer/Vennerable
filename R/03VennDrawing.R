@@ -312,6 +312,7 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 	if (!"vjust" %in% colnames(VI)) { VI$vjust <- "centre" }
 	hj <-sapply( VI$hjust,function(EXPR){switch(EXPR,left=0,right=1,center=,centre=0.5)})
 	vj <-sapply( VI$vjust,function(EXPR){switch(EXPR,top=1,bottom=0,center=,centre=0.5)})
+	print(VI)
         	xData <- VennGetUniverseRange(object)[,1]
 	yData <- VennGetUniverseRange(object)[,2]
 	 xmax= xData[2]
@@ -323,8 +324,14 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 		xfract = (xmax - xmin)/ij
 		grid.segments(x0=xfract,x1=VI$x[ij],y0=ymax-(ymax-ymin)/7,y1=VI$y[ij],default.units="native")
 		grid.text(x=xfract,y=ymax-(ymax-ymin)/7,label=as.character(VI$Label[ij]),default.units="native")
-}}
+		
+}
 
+
+}
+
+	  
+	  
 .default.FaceLabelPositions <- function(object){	
 	dm <-  dark.matter.signature(object)
 	ilabels <- data.frame(internalPointsofFaces(as(object,"TissueDrawing")))
