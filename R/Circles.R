@@ -194,7 +194,7 @@ ThreeCircles <- function(r,x,y,d,angles,V) {
 	} 
 	if (nodes>=10) stop("Still can't join circles")
 	
-       print(C3)
+     
 	C3 <- new("VennDrawing",TM2,V)
 	SetLabels <- .circle.SetLabelPositions(C3,radii=r,centres=centres)
 	C3 <- VennSetSetLabels(C3,SetLabels)
