@@ -312,14 +312,16 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 	if (!"vjust" %in% colnames(VI)) { VI$vjust <- "centre" }
 	hj <-sapply( VI$hjust,function(EXPR){switch(EXPR,left=0,right=1,center=,centre=0.5)})
 	vj <-sapply( VI$vjust,function(EXPR){switch(EXPR,top=1,bottom=0,center=,centre=0.5)})
+        	xData <- VennGetUniverseRange(object)[,1]
+	yData <- VennGetUniverseRange(object)[,2]
+	 xmax= xData[2]
+	xmin= xData[1]
+	ymax = yData[2]
+	ymin= yData[1]
 	for (ij in 1:nrow(VI)) {
-		#grid.text(x=VI$x[ij],y=VI$y[ij],hjust=hj[ij],
-		#gp=gp[[VI$FaceName[ij]]],
-		#vjust=vj[ij],label=VI$Annotation[ij],default.units="native")
-		grid.segments(x0=VI$x[ij],x1=VI$x[ij],y0=9,y1=VI$y[ij])
-		grid.text(x=VI$x[ij],y=9,label=as.character(VI$Label[ij]))
-		
-	}
+		xfract = (xmax - xmin)/ij
+		grid.segments(x0=xfract,x1=VI$x[ij],y0=ymax-(ymax-ymin)/7,y1=VI$y[ij],default.units="native")
+		grid.text(x=xfract,y=ymax-(ymax-ymin)/7,label=as.character(VI$Label[ij]),default.units="native")
 }
 
 .default.FaceLabelPositions <- function(object){	
