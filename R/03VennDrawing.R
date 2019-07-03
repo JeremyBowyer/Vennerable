@@ -367,13 +367,13 @@ PlotSetLabels <- function(object,gp,C3) {
 	xmin= xData[1]
 	ymax = yData[2]
 	ymin= yData[1]
-	for (ij in 1:nrow(VLabels)) {
+	#for (ij in 1:nrow(VLabels)) {
 		#grid.text(x=VLabels$x[ij],y=VLabels$y[ij],hjust=hj[ij],
 		#vjust=vj[ij],gp=gp[[ij]],label=as.character(VLabels$Label[ij]),default.units="native")
-		xfract = (xmax - xmin)/ij
-		grid.segments(x0=xfract,x1=VLabels$x[ij],y0=ymax-(ymax-ymin)/7,y1=VLabels$y[ij],default.units="native")
-		grid.text(x=xfract,y=ymax-(ymax-ymin)/7,label=as.character(VLabels$Label[ij]),default.units="native")
-	}
+	#	xfract = (xmax - xmin)/ij
+	#	grid.segments(x0=xfract,x1=VLabels$x[ij],y0=ymax-(ymax-ymin)/7,y1=VLabels$y[ij],default.units="native")
+	#	grid.text(x=xfract,y=ymax-(ymax-ymin)/7,label=as.character(VLabels$Label[ij]),default.units="native")
+	#}
 }
 
 
