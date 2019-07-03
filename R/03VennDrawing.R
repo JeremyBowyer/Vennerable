@@ -322,7 +322,7 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 		xfract = (xmax - xmin)/ij
 		grid.segments(x0=xfract,x1=VI$x[ij],y0=ymax-(ymax-ymin)/7,y1=VI$y[ij],default.units="native")
 		grid.text(x=xfract,y=ymax-(ymax-ymin)/7,label=as.character(VI$Label[ij]),default.units="native")
-}
+}}
 
 .default.FaceLabelPositions <- function(object){	
 	dm <-  dark.matter.signature(object)
