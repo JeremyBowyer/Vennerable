@@ -360,14 +360,16 @@ PlotSetLabels <- function(object,gp,C3) {
 	vj <-sapply( VLabels$vjust,function(EXPR){switch(EXPR,top=1,bottom=0,center=,centre=0.5)})
         	xData <- VennGetUniverseRange(C3)[,1]
 	yData <- VennGetUniverseRange(C3)[,2]
-	 
+	 xmax= xData[2]
+	xmin= xData[1]
 	ymax = yData[2]
 	ymin= yData[1]
 	for (ij in 1:nrow(VLabels)) {
 		#grid.text(x=VLabels$x[ij],y=VLabels$y[ij],hjust=hj[ij],
 		#vjust=vj[ij],gp=gp[[ij]],label=as.character(VLabels$Label[ij]),default.units="native")
-		grid.segments(x0=VLabels$x[ij],x1=VLabels$x[ij],y0=ymax-(ymax-ymin)/7,y1=VLabels$y[ij],default.units="native")
-		grid.text(x=VLabels$x[ij],y=ymax-(ymax-ymin)/7,label=as.character(VLabels$Label[ij]),default.units="native")
+		xfract = (xmax - xmin)/ij
+		grid.segments(x0=xfract,x1=VLabels$x[ij],y0=ymax-(ymax-ymin)/7,y1=VLabels$y[ij],default.units="native")
+		grid.text(x=xfract,y=ymax-(ymax-ymin)/7,label=as.character(VLabels$Label[ij]),default.units="native")
 	}
 }
 
