@@ -284,7 +284,7 @@ if (doWeights) {
 		}
 		c2 <- c1 + o21
 		c3 <- c1 + o31
-	        df = data.frame(r=c(dList12$r,dList23$r,dList31$r),c=c(c1,c2,c3)))
+	        df = data.frame(r=c(dList12$r,dList23$r,dList31$r),c=c(c1,c2,c3))
 		C3 <- ThreeCircles(r=c(dList12$r1,dList12$r2,dList31$r1),
 			x=c(c1[1],c2[1],c3[1]),y=c(c1[2],c2[2],c3[2]),V=V)
 	} else {
