@@ -228,7 +228,7 @@ if (doWeights) {
 		dList12 <- .Venn.2.weighted.distance (V[,c(1,2)],doEuler ) # returns radii of two circles and their distance
 		dList23 <- .Venn.2.weighted.distance (V[,c(2,3)],doEuler ) # 
 		dList31 <- .Venn.2.weighted.distance (V[,c(3,1)],doEuler ) #
-		
+		dfr = data.frame(r=c(dList12$r,dList23$r,dList31$r))
 		disjointcount <- sum(overlaps$Disjoint)
 		dp <- c( cp= dList12$d, b = dList23$d, a = dList31$d)
 		smidge <- 1 - 1e-4
@@ -284,8 +284,8 @@ if (doWeights) {
 		}
 		c2 <- c1 + o21
 		c3 <- c1 + o31
-	        dfr = data.frame(r=c(dList12$r,dList23$r,dList31$r))
-	        dfc = data.frame(c=c(c1,c2,c3))
+	        
+	        dfc = data.frame(c=c(c1[1],c2[1],c3[1]))
 	        print(dfr)
 	print(dfc)
 		C3 <- ThreeCircles(r=c(dList12$r1,dList12$r2,dList31$r1),
