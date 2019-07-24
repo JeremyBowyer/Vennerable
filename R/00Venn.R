@@ -242,6 +242,7 @@ plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
 	if (!add) {
 		grid.newpage()
 	}
+		print(gpList)
 	PlotVennGeometry(C3,gpList=gpList,show=show)
 }
 
