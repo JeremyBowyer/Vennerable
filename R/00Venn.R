@@ -208,37 +208,7 @@ plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
 			show=list(FaceText="weight",Faces=TRUE),
 		gpList){
 	C3 <- compute.Venn(V,doWeights=doWeights,doEuler=doEuler,type=type)
-	containsmatrix <- data.frame('1'=rep(FALSE,3),'2'=rep(FALSE,3),'3'=rep(FALSE,3))
-	rownames(containsmatrix) = 1:3
 	
-	for(i  in 1:3){
-		if(i == 1){
-			sets1 = c('100','110','111')
-		} 
-		else{ 
-			if(i ==2){
-				sets1 = c('110','101','111')
-			}
-			else{
-			sets1 = c('001','101','011')
-			} 
-		}
-	for(j in 1:3){
-		if(j == 1){
-			sets2 = c('100','110','111')
-		} 
-		else{ 
-			if(j ==2){
-				sets2 = c('110','101','111')
-			}
-			else{
-			sets2 = c('001','101','011')
-			} 
-	if(sum(unlist(C3[sets1])) == sum(unlist(C3[intersect(sets1,sets2)]))){
-	containsmatrix[as.character(i),as.character(j)] <- TRUE
-	} 
-	}
-	}
 	if (!add) {
 		grid.newpage()
 	}
