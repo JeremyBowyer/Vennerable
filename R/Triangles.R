@@ -160,8 +160,3 @@ compute.T3 <- function(V,doWeights=TRUE) {
 
 
 }
-
-
-
-	
-
