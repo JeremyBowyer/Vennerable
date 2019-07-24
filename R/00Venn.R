@@ -208,7 +208,7 @@ plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
 			show=list(FaceText="weight",Faces=TRUE),
 		gpList){
 	C3 <- compute.Venn(V,doWeights=doWeights,doEuler=doEuler,type=type)
-	containsmatrix <- data.frame(1=rep(FALSE,3),2=rep(FALSE,3),3=rep(FALSE,3))
+	containsmatrix <- data.frame('1'=rep(FALSE,3),'2'=rep(FALSE,3),'3'=rep(FALSE,3))
 	rownames(containsmatrix) = 1:3
 	
 	for(i  in 1:3){
