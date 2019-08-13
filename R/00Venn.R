@@ -183,7 +183,7 @@ compute.Venn <- function(V,doWeights=TRUE,doEuler=FALSE,type) {
 		ChowRuskey=,compute.CR(V,doWeights),
 		circles=
 			if (nSets==2) { compute.C2(V,doWeights,doEuler) 
-			}else if (nSets==3) {compute.C3(V,doWeights)
+			}else if (nSets==3) {tryCatch({compute.C3(V,doWeights)},error=function(e){print(e)})
 			} else { stop(sprintf("Type %s not implemented for %d sets",type,nSets))
 			} ,
 		squares=
