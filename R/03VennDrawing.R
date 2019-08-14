@@ -319,13 +319,13 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 	xmin= xData[1]
 	ymax = yData[2]
 	ymin= yData[1]
-##	for (ij in 1:nrow(VI)) {
-##		print(ij)
-##		xfract = (xmax - xmin)/ij
-##		grid.segments(x0=xfract,x1=VI$x[ij],y0=ymax-(ymax-ymin)/7,y1=VI$y[ij],default.units="native")
-##		grid.text(x=xfract,y=ymax-(ymax-ymin)/7,label=as.character(VI$Label[ij]),default.units="native")
+#	for (ij in 1:nrow(VI)) {
+#		print(ij)
+#		xfract = (xmax - xmin)/ij
+#		grid.segments(x0=xfract,x1=VI$x[ij],y0=ymax-(ymax-ymin)/7,y1=VI$y[ij],default.units="native")
+#		grid.text(x=xfract,y=ymax-(ymax-ymin)/7,label=as.character(VI$Label[ij]),default.units="native")
 		
-}
+#}
 
 
 }
