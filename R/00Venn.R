@@ -9,12 +9,13 @@ setClass("Venn",
 	representation( IndicatorWeight="matrix",IntersectionSets="list")
 )
 
-Venn <- function(Sets,Weight,SetNames,numberOfSets) {
+Venn <- function(Sets,Weight,SetNames,numberOfSets,Sets2) {
 	if (!missing(Sets)) {
 		if (is.null(names(Sets)) & !missing(SetNames)) {
 			names(Sets) <- SetNames
 		}
-		return(VennFromSets(Sets))
+		tryCatch({return(VennFromSets(Sets))},error=function(e){VennFromSets(Sets2)})
+		
 	}
 	if(missing(numberOfSets)) {
 		numberOfSets <- if (missing(SetNames)) 0  else length(SetNames)
