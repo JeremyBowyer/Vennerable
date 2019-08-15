@@ -207,7 +207,7 @@ compute.Venn <- function(V,doWeights=TRUE,doEuler=FALSE,type) {
 
 plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
 			show=list(FaceText="weight",Faces=TRUE),
-		gpList){
+		gp){
 	C3 <- compute.Venn(V,doWeights=doWeights,doEuler=doEuler,type=type)
 	
 	if (!add) {
@@ -261,7 +261,7 @@ plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
       gp$FaceText$`110`$alpha = 0
       gp$FaceText$`100`$alpha = 0
       gp$FaceText$`001-2`$alpha = 0
-	PlotVennGeometry(C3,gpList=gpList,show=show)
+	PlotVennGeometry(C3,gpList=gp,show=show)
 }
 
 setGeneric("plot")
