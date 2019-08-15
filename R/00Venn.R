@@ -14,7 +14,7 @@ Venn <- function(Sets,Weight,SetNames,numberOfSets,Sets2) {
 		if (is.null(names(Sets)) & !missing(SetNames)) {
 			names(Sets) <- SetNames
 		}
-		tryCatch({return(VennFromSets(Sets))},error=function(e){VennFromSets(Sets2)})
+		return(VennFromSets(Sets))
 		
 	}
 	if(missing(numberOfSets)) {
@@ -213,7 +213,7 @@ plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
 	if (!add) {
 		grid.newpage()
 	}
-	      gp$Face$`011` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='yellow')
+     gp$Face$`011` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='yellow')
       gp$Face$`111` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='red')
       gp$Face$`101` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='orange1')
       gp$Face$`001` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='forestgreen')
@@ -234,7 +234,7 @@ plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
       gp$FaceText$`101`$alpha = 0
       gp$FaceText$`001`$alpha = 0
       gp$FaceText$`001-1`$alpha = 0
-	 gp$Face$`011` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='yellow')
+      gp$Face$`011` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='yellow')
       gp$Face$`010` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='yellow')
       gp$Face$`111` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='red')
       gp$Face$`110` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='red')
