@@ -51,7 +51,7 @@ setMethod("PlotUniverse","VennDrawing", function(object,gp) {
 	if(missing(gp)) { gp <- NULL }
 	
 	uv <- VennGetUniverseRange(object)
-	print(uv)
+	#print(uv)
 	grid.rect(x=mean(uv[,1]),y=mean(uv[,2]),
 		width=diff(uv[,1]),height=diff(uv[,2]),default.units="native",gp=gp)
 	}
@@ -312,7 +312,7 @@ PlotIntersectionText <- function(object,gp,element.plot="weight",show.dark.matte
 	if (!"vjust" %in% colnames(VI)) { VI$vjust <- "centre" }
 	hj <-sapply( VI$hjust,function(EXPR){switch(EXPR,left=0,right=1,center=,centre=0.5)})
 	vj <-sapply( VI$vjust,function(EXPR){switch(EXPR,top=1,bottom=0,center=,centre=0.5)})
-	print(VI)
+	#print(VI)
         	xData <- VennGetUniverseRange(object)[,1]
 	yData <- VennGetUniverseRange(object)[,2]
 	 xmax= xData[2]
@@ -361,7 +361,7 @@ setMethod("Areas","VennDrawing",function(object) {
 
 PlotSetLabels <- function(object,gp,C3) {
 	VLabels <- VennGetSetLabels(object)
-	print(VLabels)
+	#print(VLabels)
 	if(missing(gp)) gp <- SetColours(object)
 	if(nrow(VLabels)==0){ warning("Can't show Set labels"); return()}
 #	print(VLabels)
@@ -385,8 +385,6 @@ PlotSetLabels <- function(object,gp,C3) {
 
 
 makevp.eqsc <- function(xrange,yrange) {
-	print(yrange)
-	print(xrange)
 	# cf Fig 7.4 of Murrell R Graphics
 	pushViewport(plotViewport(name="Vennmar",c(1,1,1,1)))
 
