@@ -209,7 +209,54 @@ plotVenn <- function(V,doWeights=TRUE,doEuler=FALSE,type,add=FALSE,
 			show=list(FaceText="weight",Faces=TRUE),
 		gp){
 	C3 <- compute.Venn(V,doWeights=doWeights,doEuler=doEuler,type=type)
-	
+	   gp$Face$`011` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='yellow')
+      gp$Face$`111` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='red')
+      gp$Face$`101` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='orange1')
+      gp$Face$`001` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='forestgreen')
+      gp$Face$`001-1` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='forestgreen')
+      gp$Face$`001-2` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='forestgreen')
+      gp$Set$Set1$col = '#111111' 
+      gp$Set$Set1$lwd = 1
+      gp$Set$Set2$col = '#111111' 
+      gp$Set$Set2$lwd = 1
+
+      gp$Set$Set3$col = '#111111' 
+      gp$Set$Set3$lwd = 1
+      gp$SetText$Set1$alpha = 0
+      gp$SetText$Set2$alpha = 0
+      gp$SetText$Set3$alpha = 0
+      gp$FaceText$`011`$alpha = 0
+      gp$FaceText$`111`$alpha = 0
+      gp$FaceText$`101`$alpha = 0
+      gp$FaceText$`001`$alpha = 0
+      gp$FaceText$`001-1`$alpha = 0
+      gp$Face$`011` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='yellow')
+      gp$Face$`010` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='yellow')
+      gp$Face$`111` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='red')
+      gp$Face$`110` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='red')
+      gp$Face$`101` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='orange1')
+      gp$Face$`100` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='orange1')
+      gp$Face$`001` = gpar(col = "black", lty = "solid", lwd = 3, fontsize = 16,fill='forestgreen')
+
+
+      gp$Set$Set3$col = '#111111' 
+      gp$Set$Set1$col = '#111111'
+      gp$Set$Set2$col = '#111111'
+      gp$Set$Set3$lwd = 1
+      gp$Set$Set1$lwd = 1
+      gp$Set$Set2$lwd = 1
+      gp$SetText$Set1$alpha = 0
+      gp$SetText$Set2$alpha = 0
+      gp$SetText$Set3$alpha = 0
+      gp$FaceText$`011`$alpha = 0
+      gp$FaceText$`111`$alpha = 0
+      gp$FaceText$`101`$alpha = 0
+      gp$FaceText$`001`$alpha = 0
+      gp$FaceText$`001-1`$alpha = 0
+      gp$FaceText$`010`$alpha = 0
+      gp$FaceText$`110`$alpha = 0
+      gp$FaceText$`100`$alpha = 0
+      gp$FaceText$`001-2`$alpha = 0
 	if (!add) {
 		grid.newpage()
 	}
